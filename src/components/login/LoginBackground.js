@@ -1,7 +1,11 @@
 import styled from 'styled-components';
+import image from '../../images/background.jpg';
 
 const LoginBackground = styled.div`
     background-color: rgb(228, 231, 238);
+    background-image: url(${image});
+    background-size: cover;
+    background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
