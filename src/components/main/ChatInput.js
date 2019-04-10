@@ -1,26 +1,28 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { FormInput, InputGroup, InputGroupAddon, Button } from 'shards-react';
 
-const style = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    height: "90px",
-    padding: "20px",
-}
+const Input = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    height: 90px;
+    padding: 20px;
+`
 
 class ChatInput extends Component {
     state = {  }
     render() { 
         return (
-            <div style={style}>
+            <Input>
                 <InputGroup>
                     <FormInput placeholder="Message" />
                     <InputGroupAddon type="append">
-                        <Button theme="secondary">Enter</Button>
+                        <Button theme="primary">Enter</Button>
                     </InputGroupAddon>
                 </InputGroup>
-            </div>
+            </Input>
         );
     }
 }

@@ -35,7 +35,7 @@ class Main extends Component {
 
     fetchMessages = () => {
         this.props.currentUser.subscribeToRoomMultipart({
-            roomId: '19390309',
+            roomId: '19390335',
             hooks: {
                 onMessage: message => {
                     this.props.fetchMessages({

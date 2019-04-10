@@ -6,6 +6,7 @@ const LoginBackground = styled.div`
     background-image: url(${image});
     background-size: cover;
     background-position: center;
+    font-family: 'Roboto', sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -39,7 +39,7 @@ class Login extends Component {
                             <FormInput placeholder="Username" value={this.state.username} onChange={this.changeUsername}/>
                             <FormInput type="password" placeholder="Password" />
                         </div>
-                        <Button block theme="info" onClick={this.onSubmit}>Login</Button>
+                        <Button block theme="primary" onClick={this.onSubmit}>Login</Button>
                 </LoginCard>
             </LoginBackground>
         );
