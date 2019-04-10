@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+import TopBar from '../topbar/TopBar';
+import ChatBody from './ChatBody';
 import ChatInput from './ChatInput';
 
-const style = {
-    display: "flex",
-    flexDirection: "column",
-    height: "94vh",
-}
+const Body = styled.div`
+    background-color: rgb(228, 231, 238);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+`
 
 class Main extends Component {
     render() { 
         return (
-            <div style={style}>
-                <div style={{flex: 1}} />
-                <ChatInput />
-            </div>
+            <Body>
+                <TopBar/>
+                <ChatBody/>
+                <ChatInput/>
+            </Body>
         );
     }
 }

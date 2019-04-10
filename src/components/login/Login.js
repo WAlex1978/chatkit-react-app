@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FormInput, Card, Button } from 'shards-react';
+import { FormInput, Button } from 'shards-react';
 import { login } from '../../services/authenticate';
 
 import LoginBackground from './LoginBackground';
@@ -35,11 +35,11 @@ class Login extends Component {
         return (
             <LoginBackground>
                 <LoginCard>
-                    <div style={{marginBottom: "10px", width: "100%"}}>
-                        <FormInput placeholder="Username" value={this.state.username} onChange={this.changeUsername}/>
-                        <FormInput type="password" placeholder="Password" />
-                    </div>
-                    <Button block theme="info" onClick={this.onSubmit}>Login</Button>
+                        <div style={{marginBottom: "10px", width: "100%"}}>
+                            <FormInput placeholder="Username" value={this.state.username} onChange={this.changeUsername}/>
+                            <FormInput type="password" placeholder="Password" />
+                        </div>
+                        <Button block theme="info" onClick={this.onSubmit}>Login</Button>
                 </LoginCard>
             </LoginBackground>
         );

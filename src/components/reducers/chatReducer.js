@@ -1,5 +1,6 @@
 const initState = {
-    currentUser: null
+    currentUser: null,
+    rooms: [],
 }
 
 const chatReducer = (state = initState, action) => {

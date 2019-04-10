@@ -21,5 +21,6 @@ export async function login (username) {
     }
     catch (err) {
         console.log(err);
+        return null;
     }
 }

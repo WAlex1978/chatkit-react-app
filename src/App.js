@@ -5,7 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css";
 
 import Login from './components/login/Login';
-import TopBar from './components/topbar/TopBar';
 import Main from './components/main/Main';
 
 const mapStateToProps = (state) => {
@@ -23,7 +22,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        Hi {this.props.currentUser.id}
+        <Main />
       </div>
     );
   }
