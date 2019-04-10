@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { FormInput, Card, Button } from 'shards-react';
 import { login } from '../../services/authenticate';
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setCurrentUser: (currentUser) => {dispatch({
+            type: 'SET_CURRENT_USER',
+            currentUser,
+        })}
+    }
+}
 
 class Login extends Component {
     state = {
@@ -14,7 +24,8 @@ class Login extends Component {
     onSubmit = async (e) => {
         e.preventDefault();
         let currentUser = await login(this.state.username);
-        console.log(currentUser);
+
+        this.props.setCurrentUser(currentUser);
     }
 
     render() { 
@@ -28,4 +39,4 @@ class Login extends Component {
     }
 }
  
-export default Login;
+export default connect (null, mapDispatchToProps) (Login);
