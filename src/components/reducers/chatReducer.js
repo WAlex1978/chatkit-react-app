@@ -1,5 +1,6 @@
 const initState = {
     currentUser: null,
+    messages: [],
     rooms: [],
 }
 
@@ -9,6 +10,16 @@ const chatReducer = (state = initState, action) => {
             return {
                 ...state,
                 currentUser: action.currentUser,
+            }
+
+        case 'FETCH_MESSAGES':
+            return {
+                ...state,
+                messages: [...state.messages, {
+                    senderId: action.message.senderId,
+                    body: action.message.body,
+                    date: action.message.date,
+                }]
             }
 
         default:
