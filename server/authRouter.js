@@ -6,6 +6,17 @@ const chatkit = new Chatkit.default({
     key: '23a86e19-dd12-4e68-86be-8de74b244ee7:fWn8LWlyxwvx1DUT+4Duza9rDmSpBfq5IKXT05fMikY=',
 })
 
+authRouter.post('/', async (req, res) => {
+    let user_id = req.query.user_id;
+
+    const authData = await chatkit.authenticate({
+      userId: user_id
+    });
+  
+    res.status(authData.status).send(authData.body);
+})
+
+
 authRouter.post('/login', async (req, res) => {
     const username = req.body.username;
 
@@ -18,7 +29,7 @@ authRouter.post('/login', async (req, res) => {
         res.sendStatus(201);
     }
     catch (err) {
-        err.error === 'services/chatkit/user_already_exists' ? res.sendStatus(200) : res.status(err.status).send(err.error);
+        err.error === 'services/chatkit/user_already_exists' ? res.sendStatus(200) : res.status(err.status).send(err.error_description);
     }
 });
 
