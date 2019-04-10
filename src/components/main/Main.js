@@ -2,15 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import styled from 'styled-components';
 import TopBar from '../topbar/TopBar';
+import SideBar from '../sidebar/SideBar';
 import ChatBody from './ChatBody';
 import ChatInput from './ChatInput';
-
-const Body = styled.div`
-    background-color: rgb(228, 231, 238);
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-`
 
 const mapStateToProps = (state) => {
     return {
@@ -28,7 +22,18 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
+// Style declaration for the main body
+const Body = styled.div`
+    background-color: rgb(228, 231, 238);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+`
+
 class Main extends Component {
+
+    // Fetch chatroom messages
+    // Update global state with messages
     componentWillMount = () => {
         this.fetchMessages();
     }
@@ -40,6 +45,7 @@ class Main extends Component {
                 onMessage: message => {
                     this.props.fetchMessages({
                         senderId: message.senderId,
+                        roomId: message.roomId,
                         body: message.parts[0].payload.content,
                         date: message.createdAt,
                     });
@@ -53,8 +59,13 @@ class Main extends Component {
         return (
             <Body>
                 <TopBar/>
-                <ChatBody/>
-                <ChatInput/>
+                <div style={{display: "flex", flex: 1}}>
+                    <SideBar/>
+                        <div style={{display: "flex", flexDirection: "column"}}>
+                            <ChatBody/>
+                            <ChatInput/>
+                        </div>
+                </div>
             </Body>
         );
     }

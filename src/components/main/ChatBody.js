@@ -36,6 +36,12 @@ const P = styled.p`
 `
 
 class ChatBody extends Component {
+
+    // Scroll to bottom of chat on update
+    componentDidUpdate() {
+        this.bottom.scrollIntoView();
+    }
+
     render() { 
         return (
             <Body>
@@ -50,6 +56,7 @@ class ChatBody extends Component {
                         <P>{message.body}</P>
                     </span>
                 ))}
+                <div ref={(el) => {this.bottom = el;}} />
             </Body>
         );
     }
