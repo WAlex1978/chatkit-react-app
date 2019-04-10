@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { FormInput, Card, Button } from 'shards-react';
 import { login } from '../../services/authenticate';
 
+import LoginBackground from './LoginBackground';
+import LoginCard from './LoginCard';
+
 const mapDispatchToProps = (dispatch) => {
     return {
         setCurrentUser: (currentUser) => {dispatch({
@@ -30,11 +33,15 @@ class Login extends Component {
 
     render() { 
         return (
-            <Card>
-                <FormInput placeholder="Username" value={this.state.username} onChange={this.changeUsername}/>
-                <FormInput placeholder="Password" />
-                <Button theme="info" onClick={this.onSubmit}>Login</Button>
-            </Card>
+            <LoginBackground>
+                <LoginCard>
+                    <div style={{marginBottom: "10px", width: "100%"}}>
+                        <FormInput placeholder="Username" value={this.state.username} onChange={this.changeUsername}/>
+                        <FormInput type="password" placeholder="Password" />
+                    </div>
+                    <Button block theme="info" onClick={this.onSubmit}>Login</Button>
+                </LoginCard>
+            </LoginBackground>
         );
     }
 }

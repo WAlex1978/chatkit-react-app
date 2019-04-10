@@ -1,5 +1,5 @@
 const initState = {
-    currentUser: ''
+    currentUser: null
 }
 
 const chatReducer = (state = initState, action) => {
