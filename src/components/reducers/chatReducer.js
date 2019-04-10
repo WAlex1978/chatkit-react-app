@@ -1,7 +1,6 @@
 const initState = {
     currentUser: null,
     messages: [],
-    rooms: [],
 }
 
 const chatReducer = (state = initState, action) => {

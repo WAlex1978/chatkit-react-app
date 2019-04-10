@@ -9,13 +9,17 @@ const chatkit = new Chatkit.default({
 authRouter.post('/', async (req, res) => {
     let user_id = req.query.user_id;
 
-    const authData = await chatkit.authenticate({
-      userId: user_id
-    });
-  
-    res.status(authData.status).send(authData.body);
+    try {
+        const authData = await chatkit.authenticate({
+            userId: user_id
+        });
+    
+        res.status(authData.status).send(authData.body);
+    }
+    catch (err) {
+        console.log(err);
+    }
 })
-
 
 authRouter.post('/login', async (req, res) => {
     const username = req.body.username;

@@ -14,20 +14,21 @@ const mapStateToProps = (state) => {
 const Body = styled.div`
     flex: 1;
     font-family: 'Roboto', sans-serif;
+    color: #000;
     text-align: left;
-    padding: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
     overflow: auto;
 `
 
 // Style declaration for displaying senderId
 const Title = styled.div`
-    color: #000;
-    font-size: 24px;
+    font-size: 20px;
+    margin-top: 10px;
 `
 
 // Style declaration for displaying text contents
 const P = styled.p`
-    color: #000;
     font-size: 14px;
     font-weight: 300;
     margin-bottom: 5px;

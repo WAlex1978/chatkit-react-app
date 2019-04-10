@@ -35,11 +35,8 @@ class Login extends Component {
         return (
             <LoginBackground>
                 <LoginCard>
-                        <div style={{marginBottom: "10px", width: "100%"}}>
-                            <FormInput placeholder="Username" value={this.state.username} onChange={this.changeUsername}/>
-                            <FormInput type="password" placeholder="Password" />
-                        </div>
-                        <Button block theme="primary" onClick={this.onSubmit}>Login</Button>
+                    <FormInput placeholder="Username" value={this.state.username} onChange={this.changeUsername}/>
+                    <Button block theme="primary" onClick={this.onSubmit} style={{marginTop: "5px"}}>Join Chatroom</Button>
                 </LoginCard>
             </LoginBackground>
         );
