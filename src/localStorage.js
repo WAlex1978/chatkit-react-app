@@ -6,7 +6,7 @@ export const loadState = () => {
 
         // If user does not exist in local storage
         // Return undefined
-        if (user === null) {
+        if (user === null && user.currentUser !== '') {
             return undefined;
         }
 

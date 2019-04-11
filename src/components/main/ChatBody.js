@@ -59,9 +59,10 @@ class ChatBody extends Component {
         this.setState({messageId: messageId});
     }
 
-    // Delete message
+    // Delete message then clean state
     deleteMessage = async (messageId) => {
         await deleteMessage(messageId);
+        this.props.deleteMessage(messageId);
     }
 
     render() { 
@@ -113,5 +114,14 @@ const mapStateToProps = (state) => {
         messages: state.messages,
     }
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deleteMessage: messageId => {dispatch({
+            type: 'DELETE_MESSAGE',
+            messageId,
+        })}
+    }
+}
  
-export default connect (mapStateToProps) (ChatBody);
+export default connect (mapStateToProps, mapDispatchToProps) (ChatBody);

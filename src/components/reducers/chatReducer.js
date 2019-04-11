@@ -23,6 +23,14 @@ const chatReducer = (state = initState, action) => {
                 }]
             }
 
+        case 'DELETE_MESSAGE':
+            return {
+                ...state,
+                messages: state.messages.filter(message => {
+                    return message.messageId !== action.messageId;
+                })
+            }
+
         default:
             return state;
     }
