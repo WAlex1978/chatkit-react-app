@@ -3,14 +3,6 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Scrollbars } from 'react-custom-scrollbars';
 
-
-const mapStateToProps = (state) => {
-    return {
-        currentUser: state.currentUser,
-        messages: state.messages,
-    }
-}
-
 // Style declarations
 // Style declaration for the chat body
 const Body = styled.section`
@@ -19,22 +11,27 @@ const Body = styled.section`
     color: #000;
     text-align: left;
     padding-left: 20px;
-    padding-right: 20px;
+    padding-right: 10px;
     overflow: auto;
 `
 
-// Style declaration for displaying senderId
+// Style declarations for chat body
 const Title = styled.div`
     font-size: 20px;
-    margin-top: 20px;
 `
 
-// Style declaration for displaying text contents
 const P = styled.p`
     font-size: 14px;
-    font-weight: 300;
     margin-bottom: 5px;
     padding: 0px
+`
+
+const HR = styled.div`
+    background-color: rgba(45, 45, 45, .3);
+    height: .8px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
 `
 
 class ChatBody extends Component {
@@ -54,8 +51,16 @@ class ChatBody extends Component {
 
                             {/* If the senderId for current message is not the same as previous message */}
                             {/* Or if this is the first message, then do not display senderId */}
-                            {i === 0 || this.props.messages[i].senderId !== this.props.messages[i-1].senderId ?
-                            <Title>{message.senderId}</Title> : null}
+                            {i === 0 || this.props.messages[i].senderId !== this.props.messages[i-1].senderId ? (
+                                <span>
+                                    {/* If message is not the first in list */}
+                                    {/* Display horizontal rule, null if else */}
+                                    {i !== 0 ? <HR/> : null}
+                                    
+                                    <Title>{message.senderId}</Title>
+                                </span>
+                            ) : null}
+                            
                             <P>{message.body}</P>
                         </span>
                     ))}
@@ -65,6 +70,13 @@ class ChatBody extends Component {
                     </Scrollbars>
             </Body>
         );
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        currentUser: state.currentUser,
+        messages: state.messages,
     }
 }
  

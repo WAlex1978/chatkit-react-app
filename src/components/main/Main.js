@@ -1,27 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import Scrollbars from 'react-scrollbars-custom';
 import styled from 'styled-components';
 import TopBar from '../topbar/TopBar';
 import SideBar from '../sidebar/SideBar';
 import ChatBody from './ChatBody';
 import ChatInput from './ChatInput';
-
-const mapStateToProps = (state) => {
-    return {
-        currentUser: state.currentUser,
-        messages: state.messages,
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        fetchMessages: message => {dispatch({
-            type: 'FETCH_MESSAGES',
-            message,
-        })}
-    }
-}
 
 // Style declaration for the main body
 const Body = styled.div`
@@ -39,7 +22,6 @@ class Main extends Component {
     }
 
     subscribe = () => {
-        console.log(this.props.currentUser)
         this.props.currentUser.subscribeToRoomMultipart({
             roomId: '19390335',
             hooks: {
@@ -72,6 +54,22 @@ class Main extends Component {
             </Body>
   
         );
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        currentUser: state.currentUser,
+        messages: state.messages,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchMessages: message => {dispatch({
+            type: 'FETCH_MESSAGES',
+            message,
+        })}
     }
 }
  

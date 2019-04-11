@@ -4,13 +4,9 @@ import styled from 'styled-components';
 import { FormInput, InputGroup, InputGroupAddon, Button } from 'shards-react';
 import { sendMessage } from '../../services/message';
 
-const mapStateToProps = (state) => {
-    return {
-        currentUser: state.currentUser,
-    }
-}
-
+// Style declarations for chat input area
 const Input = styled.div`
+    background-color: rgb(242, 244, 246);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,9 +16,9 @@ const Input = styled.div`
 `
 
 const HR = styled.div`
-    background-color: rgba(45, 45, 45, .5);
-    height: .5px;
-    width: 95%;
+    background-color: rgb(189, 200, 210);
+    height: 1px;
+    width: 100%;
     margin: auto;
 `
 
@@ -35,8 +31,11 @@ class ChatInput extends Component {
         this.setState({text: e.target.value});
     }
 
+    // On submit, send message
+    // Reset state to clear input
     onSubmit = (e) => {
         e.preventDefault();
+
         sendMessage(this.props.currentUser, this.state.text);
         this.setState({text: ''});
     }
@@ -57,5 +56,11 @@ class ChatInput extends Component {
         );
     }
 }
- 
+
+const mapStateToProps = (state) => {
+    return {
+        currentUser: state.currentUser,
+    }
+}
+
 export default connect (mapStateToProps) (ChatInput);
