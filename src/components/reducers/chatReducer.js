@@ -31,6 +31,13 @@ const chatReducer = (state = initState, action) => {
                 })
             }
 
+        case 'LOG_OUT':
+            return {
+                username: null,
+                currentUser: null,
+                messages: [],
+            }
+
         default:
             return state;
     }

@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 const style = {
     backgroundColor: "rgb(0, 123, 255)",
     width: "100vw",
-    height: "40px",
+    height: "30px",
 }
 
 class TopBar extends Component {
