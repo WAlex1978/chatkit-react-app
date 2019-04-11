@@ -4,7 +4,7 @@ const cors = require('cors');
 const authRouter = require('./server/authRouter');
 const messageRouter = require('./server/messageRouter');
 
-const PORT = 5000;
+const PORT = process.env.PORT || 8080;
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));

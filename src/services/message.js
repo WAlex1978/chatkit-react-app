@@ -12,7 +12,7 @@ export function sendMessage (currentUser, text) {
 
 export async function deleteMessage (messageId) {
     try {
-        const status = await fetch('http://localhost:5000/message/delete', {
+        const status = await fetch('message/delete', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
