@@ -22,8 +22,7 @@
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "node server.js",
-    "client": "react-scripts start",
-    "heroku-postbuild": "npm install && npm run build"
+    "client": "react-scripts start"
   },
   "eslintConfig": {
     "extends": "react-app"
