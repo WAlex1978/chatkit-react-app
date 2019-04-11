@@ -42,17 +42,17 @@ class ChatInput extends Component {
 
     render() { 
         return (
-            <Fragment>
+            <form onSubmit={this.onSubmit}>
                 <HR />
                 <Input>
                     <InputGroup>
-                        <FormInput value={this.state.text} onChange={this.onChange} placeholder="Message" />
-                        <InputGroupAddon type="append">
-                            <Button onClick={this.onSubmit} theme="primary">Enter</Button>
-                        </InputGroupAddon>
+                            <FormInput value={this.state.text} onChange={this.onChange} placeholder="Message" />
+                            <InputGroupAddon type="append">
+                                <Button type="submit" theme="primary">Enter</Button>
+                            </InputGroupAddon>
                     </InputGroup>
                 </Input>
-            </Fragment>
+            </form>
         );
     }
 }

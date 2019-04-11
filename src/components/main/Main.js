@@ -22,40 +22,36 @@ class Main extends Component {
     }
 
     subscribe = () => {
-        this.props.currentUser.subscribeToRoomMultipart({
-            roomId: '19390335',
-            hooks: {
-                
-                // Updates when a new message has been added to the room
-                onMessage: message => {
-                    if (message.parts[0].payload.content !== 'DELETED') {
-                        this.props.fetchMessages({
-                            messageId: message.id,
-                            senderId: message.senderId,
-                            body: message.parts[0].payload.content,
-                            date: message.createdAt,
-                        });
+        try{
+            this.props.currentUser.subscribeToRoomMultipart({
+                roomId: '19390335',
+                hooks: {
+                    // Updates when a new message has been added to the room
+                    onMessage: message => {
+                        if (message.parts[0].payload.content !== 'DELETED') {
+                            this.props.fetchMessages(message);
+                        }
                     }
-                }
-            },
-            messageLimit: 100,
-        });
+                },
+            });
+        }
+        catch(err) {
+            console.log(err);
+        }
     }
 
     render() { 
         return (
-        
             <Body>
                 <TopBar/>
                 <div style={{display: "flex", flex: 1}}>
                     <SideBar/>
-                        <div style={{display: "flex", flexDirection: "column", flex: 1}}>
-                            <ChatBody/>
-                            <ChatInput/>
-                        </div>
+                    <div style={{display: "flex", flexDirection: "column", flex: 1}}>
+                        <ChatBody/>
+                        <ChatInput/>
+                    </div>
                 </div>
             </Body>
-  
         );
     }
 }

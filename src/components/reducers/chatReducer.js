@@ -16,10 +16,10 @@ const chatReducer = (state = initState, action) => {
             return {
                 ...state,
                 messages: [...state.messages, {
-                    messageId: action.message.messageId,
+                    messageId: action.message.id,
                     senderId: action.message.senderId,
-                    body: action.message.body,
-                    date: action.message.date,
+                    body: action.message.parts[0].payload.content,
+                    date: action.message.createdAt,
                 }]
             }
 

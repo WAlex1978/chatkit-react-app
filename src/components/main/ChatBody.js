@@ -83,12 +83,12 @@ class ChatBody extends Component {
                                     {/* Display horizontal rule, null if else */}
                                     {i !== 0 ? <HR/> : null}
                                     
-                                    <Title>{message.senderId}</Title>
+                                    <Fade in><Title>{message.senderId}</Title></Fade>
                                 </span>
                             ) : null}
 
                             <div style={{display: "flex", justifyContent: "space-between"}}>
-                                <P>{message.body}</P>
+                                <Fade in><P>{message.body}</P></Fade>
 
                                 {/* If hovering over element */}
                                 {/* If current user is sender of message */}
