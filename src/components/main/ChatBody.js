@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Scrollbars } from 'react-custom-scrollbars';
 import Fade from '@material-ui/core/Fade';
+import { deleteMessage } from '../../services/message';
 
 // Style declarations
 // Style declaration for the chat body
@@ -58,6 +59,11 @@ class ChatBody extends Component {
         this.setState({messageId: messageId});
     }
 
+    // Delete message
+    deleteMessage = async (messageId) => {
+        await deleteMessage(messageId);
+    }
+
     render() { 
         return (
             <Body>
@@ -82,8 +88,12 @@ class ChatBody extends Component {
 
                             <div style={{display: "flex", justifyContent: "space-between"}}>
                                 <P>{message.body}</P>
+
+                                {/* If hovering over element */}
+                                {/* If current user is sender of message */}
+                                {/* Display delete button, delete message onClick */}
                                 {message.senderId === this.props.currentUser.id && this.state.messageId === message.messageId ? 
-                                    <Fade in><Delete>Delete</Delete></Fade> : null}
+                                <Fade in><Delete onClick={() => this.deleteMessage(message.messageId)}>Delete</Delete></Fade> : null}
                             </div>
                         </div>
                     ))}

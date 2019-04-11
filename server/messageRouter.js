@@ -25,4 +25,16 @@ messageRouter.post('/send', async (req, res) => {
     }
 })
 
+messageRouter.post('/delete', async (req, res) => {
+    try {
+        const id = req.body.messageId;
+
+        await chatkit.deleteMessage({id: id});
+        res.status(200).send('DELETED');
+    }
+    catch (err) {
+        console.log(err);
+    }
+})
+
 module.exports = messageRouter;
