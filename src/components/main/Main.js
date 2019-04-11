@@ -32,20 +32,21 @@ const Body = styled.div`
 
 class Main extends Component {
 
-    // Fetch chatroom messages
-    // Update global state with messages
+    // Subscribe to room on component mount
     componentWillMount = () => {
-        this.fetchMessages();
+        this.subscribe();
     }
 
-    fetchMessages = () => {
+    subscribe = () => {
+        console.log(this.props.currentUser)
         this.props.currentUser.subscribeToRoomMultipart({
             roomId: '19390335',
             hooks: {
+                
+                // Updates when a new message has been added to the room
                 onMessage: message => {
                     this.props.fetchMessages({
                         senderId: message.senderId,
-                        roomId: message.roomId,
                         body: message.parts[0].payload.content,
                         date: message.createdAt,
                     });

@@ -1,4 +1,5 @@
 const initState = {
+    username: null,
     currentUser: null,
     messages: [],
 }
@@ -16,7 +17,6 @@ const chatReducer = (state = initState, action) => {
                 ...state,
                 messages: [...state.messages, {
                     senderId: action.message.senderId,
-                    roomId: action.message.roomId,
                     body: action.message.body,
                     date: action.message.date,
                 }]

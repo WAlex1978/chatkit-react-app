@@ -24,7 +24,7 @@ const Body = styled.div`
 // Style declaration for displaying senderId
 const Title = styled.div`
     font-size: 20px;
-    margin-top: 10px;
+    margin-top: 20px;
 `
 
 // Style declaration for displaying text contents
@@ -56,6 +56,8 @@ class ChatBody extends Component {
                         <P>{message.body}</P>
                     </span>
                 ))}
+
+                {/* Empty div to mark bottom of chat */}
                 <div ref={(el) => {this.bottom = el;}} />
             </Body>
         );

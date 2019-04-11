@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Background = styled.div`
     background-color: rgb(200, 200, 200);
     height: 100%;
-    width: 350px;
+    width: 500px;
 `
 
 class SideBar extends Component {
