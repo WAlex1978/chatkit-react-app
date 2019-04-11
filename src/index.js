@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 
 import { Provider } from 'react-redux';
-import { loadState, saveState } from './localStorage';
+import { loadState } from './localStorage';
 import { createStore } from 'redux';
 import chatReducer from './components/reducers/chatReducer';
 

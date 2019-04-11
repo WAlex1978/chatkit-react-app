@@ -16,6 +16,7 @@ const chatReducer = (state = initState, action) => {
             return {
                 ...state,
                 messages: [...state.messages, {
+                    messageId: action.message.messageId,
                     senderId: action.message.senderId,
                     body: action.message.body,
                     date: action.message.date,

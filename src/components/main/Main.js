@@ -29,6 +29,7 @@ class Main extends Component {
                 // Updates when a new message has been added to the room
                 onMessage: message => {
                     this.props.fetchMessages({
+                        messageId: message.id,
                         senderId: message.senderId,
                         body: message.parts[0].payload.content,
                         date: message.createdAt,

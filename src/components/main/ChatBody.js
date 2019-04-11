@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Scrollbars } from 'react-custom-scrollbars';
+import Fade from '@material-ui/core/Fade';
 
 // Style declarations
 // Style declaration for the chat body
@@ -23,7 +24,14 @@ const Title = styled.div`
 const P = styled.p`
     font-size: 14px;
     margin-bottom: 5px;
+    width: 95%;
     padding: 0px
+`
+
+const Delete = styled.div`
+    font-size: 10px;
+    padding-right: 12px;
+    cursor: pointer;
 `
 
 const HR = styled.div`
@@ -35,19 +43,30 @@ const HR = styled.div`
 `
 
 class ChatBody extends Component {
+    state = {
+        messageId: '',
+    }
 
     // Scroll to bottom of chat on update
-    componentDidUpdate() {
-        this.bottom.scrollIntoView();
+    componentDidUpdate(prevProps) {
+        if (this.props.messages !== prevProps.messages) {
+            this.bottom.scrollIntoView();
+        }
+    }
+
+    onMouseEnter = (messageId) => {
+        this.setState({messageId: messageId});
     }
 
     render() { 
         return (
             <Body>
+                {/* Custom Scrollbar */}
                 <Scrollbars autoHide>
+
                     {/* Loop through all messages */}
                     {this.props.messages.map((message, i) => (
-                        <span key={i}>
+                        <div key={i} onMouseEnter={() => this.onMouseEnter(message.messageId)}>
 
                             {/* If the senderId for current message is not the same as previous message */}
                             {/* Or if this is the first message, then do not display senderId */}
@@ -60,14 +79,19 @@ class ChatBody extends Component {
                                     <Title>{message.senderId}</Title>
                                 </span>
                             ) : null}
-                            
-                            <P>{message.body}</P>
-                        </span>
+
+                            <div style={{display: "flex", justifyContent: "space-between"}}>
+                                <P>{message.body}</P>
+                                {message.senderId === this.props.currentUser.id && this.state.messageId === message.messageId ? 
+                                    <Fade in><Delete>Delete</Delete></Fade> : null}
+                            </div>
+                        </div>
                     ))}
 
                     {/* Empty div to mark bottom of chat */}
                     <div ref={(el) => {this.bottom = el;}} />
-                    </Scrollbars>
+                                
+                </Scrollbars>
             </Body>
         );
     }
