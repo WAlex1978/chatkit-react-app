@@ -13,31 +13,38 @@ class Login extends Component {
         username: '',
     }
 
-    // On component mount
-    // Check if username has already been set
-    componentWillMount = async () => {
+    componentWillMount = () => {
         if (this.props.username !== null) {
-
-            // Login with set username and update currentUser
-            const currentUser = await login(this.props.username);
-            this.props.setCurrentUser(currentUser);
+            this.logIn(this.props.username);
         }
     }
 
-    changeUsername = (e) => {
+    onChange = (e) => {
         this.setState({username: e.target.value});
     }
 
-    // On submit, create and authenticate user
-    // Save user to local storage
-    onSubmit = async (e) => {
+    onSubmit = (e) => {
         e.preventDefault();
+        this.logIn(this.state.username);
+    }
 
-        // Check if input is not empty
-        if (this.state.username !== '') {
-            const currentUser = await login(this.state.username);
+    logIn = async (username) => {
+        try {
+
+            // Check if username is blank or null
+            if (username === '' || username === null) {
+                throw Error ("Invalid username");
+            }
+
+            // Login with set username and update currentUser
+            const currentUser = await login(username);
             this.props.setCurrentUser(currentUser);
+
+            // Add username to local state
             saveState({currentUser: currentUser.id});
+        }
+        catch(err) {
+            console.log(err);
         }
     }
 
@@ -50,7 +57,7 @@ class Login extends Component {
                 // Render background image
                 <LoginBackground image>
                     <LoginCard>
-                        <FormInput placeholder="Username" value={this.state.username} onChange={this.changeUsername}/>
+                        <FormInput placeholder="Username" value={this.state.username} onChange={this.onChange}/>
                         <Button block theme="primary" onClick={this.onSubmit} style={{marginTop: "5px"}}>Join Chatroom</Button>
                     </LoginCard>
                 </LoginBackground>
