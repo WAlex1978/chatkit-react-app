@@ -13,12 +13,15 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "react": "^16.8.6",
+    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.1",
     "react-scripts": "2.1.8",
+    "react-scrollbars-custom": "^4.0.0-alpha.12",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "shards-react": "^1.0.3",
+    "simplebar-react": "^0.1.6",
     "styled-components": "^4.2.0"
   },
   "scripts": {

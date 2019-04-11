@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import Scrollbars from 'react-scrollbars-custom';
 import styled from 'styled-components';
 import TopBar from '../topbar/TopBar';
 import SideBar from '../sidebar/SideBar';
@@ -58,16 +59,18 @@ class Main extends Component {
 
     render() { 
         return (
+        
             <Body>
                 <TopBar/>
                 <div style={{display: "flex", flex: 1}}>
                     <SideBar/>
-                        <div style={{display: "flex", flexDirection: "column"}}>
+                        <div style={{display: "flex", flexDirection: "column", flex: 1}}>
                             <ChatBody/>
                             <ChatInput/>
                         </div>
                 </div>
             </Body>
+  
         );
     }
 }

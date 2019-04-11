@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { Scrollbars } from 'react-custom-scrollbars';
+
 
 const mapStateToProps = (state) => {
     return {
@@ -11,7 +13,7 @@ const mapStateToProps = (state) => {
 
 // Style declarations
 // Style declaration for the chat body
-const Body = styled.div`
+const Body = styled.section`
     flex: 1;
     font-family: 'Roboto', sans-serif;
     color: #000;
@@ -45,20 +47,22 @@ class ChatBody extends Component {
     render() { 
         return (
             <Body>
-                {/* Loop through all messages */}
-                {this.props.messages.map((message, i) => (
-                    <span key={i}>
+                <Scrollbars autoHide>
+                    {/* Loop through all messages */}
+                    {this.props.messages.map((message, i) => (
+                        <span key={i}>
 
-                        {/* If the senderId for current message is not the same as previous message */}
-                        {/* Or if this is the first message, then do not display senderId */}
-                        {i === 0 || this.props.messages[i].senderId !== this.props.messages[i-1].senderId ?
-                        <Title>{message.senderId}</Title> : null}
-                        <P>{message.body}</P>
-                    </span>
-                ))}
+                            {/* If the senderId for current message is not the same as previous message */}
+                            {/* Or if this is the first message, then do not display senderId */}
+                            {i === 0 || this.props.messages[i].senderId !== this.props.messages[i-1].senderId ?
+                            <Title>{message.senderId}</Title> : null}
+                            <P>{message.body}</P>
+                        </span>
+                    ))}
 
-                {/* Empty div to mark bottom of chat */}
-                <div ref={(el) => {this.bottom = el;}} />
+                    {/* Empty div to mark bottom of chat */}
+                    <div ref={(el) => {this.bottom = el;}} />
+                    </Scrollbars>
             </Body>
         );
     }
