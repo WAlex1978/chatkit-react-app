@@ -1,7 +1,7 @@
-export function sendMessage (currentUser, text) {
+export function sendMessage (currentUser, text, roomId) {
     try {
         currentUser.sendSimpleMessage({
-            roomId: '19390335',
+            roomId: roomId,
             text: text,
         });
     }

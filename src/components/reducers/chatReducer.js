@@ -1,6 +1,12 @@
 const initState = {
     username: null,
     currentUser: null,
+    rooms: [
+        {name: 'announcements', id: '19390485'}, 
+        {name: 'general', id: '19390335'},
+        {name: 'feedback', id: '19390487'},
+    ],
+    currentRoom: {name: 'general', id: '19390335'},
     messages: [],
 }
 
@@ -18,6 +24,7 @@ const chatReducer = (state = initState, action) => {
                 messages: [...state.messages, {
                     messageId: action.message.id,
                     senderId: action.message.senderId,
+                    roomId: action.message.roomId,
                     body: action.message.parts[0].payload.content,
                     date: action.message.createdAt,
                 }]
@@ -36,6 +43,12 @@ const chatReducer = (state = initState, action) => {
                 username: null,
                 currentUser: null,
                 messages: [],
+            }
+
+        case 'CHANGE_ROOM':
+            return {
+                ...state,
+                currentRoom: action.currentRoom,
             }
 
         default:

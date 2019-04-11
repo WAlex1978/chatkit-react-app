@@ -36,7 +36,7 @@ class ChatInput extends Component {
     onSubmit = (e) => {
         e.preventDefault();
 
-        sendMessage(this.props.currentUser, this.state.text);
+        sendMessage(this.props.currentUser, this.state.text, this.props.currentRoom.id);
         this.setState({text: ''});
     }
 
@@ -60,6 +60,7 @@ class ChatInput extends Component {
 const mapStateToProps = (state) => {
     return {
         currentUser: state.currentUser,
+        currentRoom: state.currentRoom,
     }
 }
 

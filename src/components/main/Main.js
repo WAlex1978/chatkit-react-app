@@ -23,17 +23,21 @@ class Main extends Component {
 
     subscribe = () => {
         try{
-            this.props.currentUser.subscribeToRoomMultipart({
-                roomId: '19390335',
-                hooks: {
-                    // Updates when a new message has been added to the room
-                    onMessage: message => {
-                        if (message.parts[0].payload.content !== 'DELETED') {
-                            this.props.fetchMessages(message);
+            
+            // Subscribe to all three rooms
+            this.props.rooms.forEach((room, i) => {
+                this.props.currentUser.subscribeToRoomMultipart({
+                    roomId: room.id,
+                    hooks: {
+                        onMessage: message => {
+                            if (message.parts[0].payload.content !== 'DELETED') {
+                                this.props.fetchMessages(message);
+                            }
                         }
-                    }
-                },
-            });
+                    },
+                    messageLimit: 100,
+                });
+            })
         }
         catch(err) {
             console.log(err);
@@ -60,6 +64,7 @@ const mapStateToProps = (state) => {
     return {
         currentUser: state.currentUser,
         messages: state.messages,
+        rooms: state.rooms,
     }
 }
 

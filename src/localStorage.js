@@ -15,6 +15,12 @@ export const loadState = () => {
             username: user.currentUser,
             currentUser: null,
             messages: [],
+            rooms: [
+                {name: 'announcements', id: '19390485'}, 
+                {name: 'general', id: '19390335'},
+                {name: 'feedback', id: '19390487'},
+            ],
+            currentRoom: {name: 'general', id: '19390335'},
         });
     }
     catch (err) {

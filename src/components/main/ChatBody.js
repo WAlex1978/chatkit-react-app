@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Scrollbars } from 'react-custom-scrollbars';
@@ -73,31 +73,40 @@ class ChatBody extends Component {
 
                     {/* Loop through all messages */}
                     {this.props.messages.map((message, i) => (
-                        <div key={i} onMouseEnter={() => this.onMouseEnter(message.messageId)}>
+                    <Fragment key={i}>{message.roomId !== this.props.currentRoom.id ? null : (
 
-                            {/* If the senderId for current message is not the same as previous message */}
-                            {/* Or if this is the first message, then do not display senderId */}
-                            {i === 0 || this.props.messages[i].senderId !== this.props.messages[i-1].senderId ? (
-                                <span>
-                                    {/* If message is not the first in list */}
-                                    {/* Display horizontal rule, null if else */}
-                                    {i !== 0 ? <HR/> : null}
-                                    
-                                    <Fade in><Title>{message.senderId}</Title></Fade>
-                                </span>
-                            ) : null}
+                            <div onMouseEnter={() => this.onMouseEnter(message.messageId)}>
 
-                            <div style={{display: "flex", justifyContent: "space-between"}}>
-                                <Fade in><P>{message.body}</P></Fade>
+                                {/* If the senderId for current message is not the same as previous message */}
+                                {/* Or if the roomId for the current message is not the same as the previous message */}
+                                {/* Or if this is the first message, then do not display senderId */}
+                                {i === 0 || (this.props.messages[i].senderId !== this.props.messages[i-1].senderId
+                                || this.props.messages[i].roomId !== this.props.messages[i-1].roomId ) ? (
+                                    <span>
 
-                                {/* If hovering over element */}
-                                {/* If current user is sender of message */}
-                                {/* Display delete button, delete message onClick */}
-                                {message.senderId === this.props.currentUser.id && this.state.messageId === message.messageId ? 
-                                <Fade in><Delete onClick={() => this.deleteMessage(message.messageId)}>Delete</Delete></Fade> : null}
-                            </div>
-                        </div>
-                    ))}
+                                        {/* If message is not the first in list */}
+                                        {/* If message is in the same room as the previous */}
+                                        {/* Display horizontal rule, null if else */}
+                                        {i !== 0 && this.props.messages[i].roomId === this.props.messages[i-1].roomId ? 
+                                            <HR/> : null}
+                                        
+                                        <Fade in><Title>{message.senderId}</Title></Fade>
+                                    </span>
+                                ) : null}
+
+                                <div style={{display: "flex", justifyContent: "space-between"}}>
+                                    <Fade in><P>{message.body}</P></Fade>
+
+                                    {/* If hovering over element */}
+                                    {/* If current user is sender of message */}
+                                    {/* Display delete button, delete message onClick */}
+                                    {message.senderId === this.props.currentUser.id && this.state.messageId === message.messageId ? 
+                                    <Fade in><Delete onClick={() => this.deleteMessage(message.messageId)}>Delete</Delete></Fade> : null}
+                                </div>
+
+                            </div>)}
+
+                    </Fragment> ))}
 
                     {/* Empty div to mark bottom of chat */}
                     <div ref={(el) => {this.bottom = el;}} />
@@ -112,6 +121,7 @@ const mapStateToProps = (state) => {
     return {
         currentUser: state.currentUser,
         messages: state.messages,
+        currentRoom: state.currentRoom,
     }
 }
 
