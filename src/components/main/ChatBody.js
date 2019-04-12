@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Scrollbars } from 'react-custom-scrollbars';
@@ -48,9 +48,11 @@ class ChatBody extends Component {
         messageId: '',
     }
 
-    // Scroll to bottom of chat on update
+    // Scroll to bottom of chat
+    // If receiving new message
+    // Or switching channels
     componentDidUpdate(prevProps) {
-        if (this.props.messages !== prevProps.messages) {
+        if (this.props.messages !== prevProps.messages || this.props.currentRoom !== prevProps.currentRoom) {
             this.bottom.scrollIntoView();
         }
     }

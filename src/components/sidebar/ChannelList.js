@@ -8,7 +8,7 @@ const Channels = styled.div`
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     text-align: left;
-    padding-left: 10px;
+    padding-left: 25px;
     padding-top: 10px;
     padding-bottom: 10px;
     color: #000;

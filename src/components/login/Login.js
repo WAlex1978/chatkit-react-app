@@ -37,7 +37,7 @@ class Login extends Component {
             }
 
             // Login with set username and update currentUser
-            const currentUser = await login(username);
+            const currentUser = await login(username, this.props.updatePresence);
             this.props.setCurrentUser(currentUser);
 
             // Add username to local state
@@ -82,6 +82,13 @@ const mapDispatchToProps = (dispatch) => {
         setCurrentUser: (currentUser) => {dispatch({
             type: 'SET_CURRENT_USER',
             currentUser,
+        })},
+
+        // Subscribe to user presence
+        updatePresence: (state, user) => {dispatch({
+            type: 'UPDATE_PRESENCE',
+            state,
+            user,
         })}
     }
 }

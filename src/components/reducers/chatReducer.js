@@ -8,6 +8,7 @@ const initState = {
     ],
     currentRoom: {name: 'general', id: '19390335'},
     messages: [],
+    onlineUsers: [],
 }
 
 const chatReducer = (state = initState, action) => {
@@ -49,6 +50,25 @@ const chatReducer = (state = initState, action) => {
             return {
                 ...state,
                 currentRoom: action.currentRoom,
+            }
+
+        case 'UPDATE_PRESENCE':
+
+            // If user has gone offline
+            // Remove user from online users
+            if (action.state.current === 'offline') {
+                let users = state.onlineUsers.filter(user => user !== action.user);
+
+                return {
+                    ...state,
+                    onlineUsers: users
+                }
+            }
+
+            // Else, add user to online users
+            return {
+                ...state,
+                onlineUsers: [...state.onlineUsers,action.user]
             }
 
         default:

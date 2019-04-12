@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import ChannelList from './ChannelList';
+import UserList from './UserList';
 import Logout from './Logout';
 
 const Background = styled.div`
@@ -16,6 +17,7 @@ class SideBar extends Component {
         return (
             <Background>
                 <ChannelList/>
+                <UserList/>
                 <div style={{flex: 1}} />
                 <Logout />
             </Background>

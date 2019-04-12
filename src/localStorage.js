@@ -21,6 +21,7 @@ export const loadState = () => {
                 {name: 'feedback', id: '19390487'},
             ],
             currentRoom: {name: 'general', id: '19390335'},
+            onlineUsers: [],
         });
     }
     catch (err) {

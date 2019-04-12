@@ -1,6 +1,6 @@
 import { ChatManager, TokenProvider } from '@pusher/chatkit-client'
 
-export async function login (username) {
+export async function login (username, updatePresence) {
     try {
         await fetch('api/auth/login', {
             method: 'POST',
@@ -16,7 +16,15 @@ export async function login (username) {
             tokenProvider: new TokenProvider({url: 'api/auth/'})
         });
 
-        const currentUser = await chatManager.connect();
+        const currentUser = await chatManager.connect({
+
+            // Subscribe to user presence
+            // Updates when a user signs on or off
+            onPresenceChanged: (state, user) => {
+                if (state.current === 'online' || state.previous === 'online')
+                updatePresence(state, user);
+            }
+        });
         return currentUser;
     }
     catch (err) {
