@@ -5,6 +5,7 @@ import TopBar from '../topbar/TopBar';
 import SideBar from '../sidebar/SideBar';
 import ChatBody from './ChatBody';
 import ChatInput from './ChatInput';
+import { subscribe } from '../../services/subscribe';
 
 // Style declaration for the main body
 const Body = styled.div`
@@ -18,30 +19,7 @@ class Main extends Component {
 
     // Subscribe to room on component mount
     componentWillMount = () => {
-        this.subscribe();
-    }
-
-    subscribe = () => {
-        try{
-            
-            // Subscribe to all three rooms
-            this.props.rooms.forEach((room, i) => {
-                this.props.currentUser.subscribeToRoomMultipart({
-                    roomId: room.id,
-                    hooks: {
-                        onMessage: message => {
-                            if (message.parts[0].payload.content !== 'DELETED') {
-                                this.props.fetchMessages(message);
-                            }
-                        }
-                    },
-                    messageLimit: 100,
-                });
-            })
-        }
-        catch(err) {
-            console.log(err);
-        }
+        subscribe(this.props.currentUser, this.props.rooms, this.props.fetchMessages)
     }
 
     render() { 
@@ -63,7 +41,6 @@ class Main extends Component {
 const mapStateToProps = (state) => {
     return {
         currentUser: state.currentUser,
-        messages: state.messages,
         rooms: state.rooms,
     }
 }

@@ -19,7 +19,7 @@ const Body = styled.section`
 
 // Style declarations for chat body
 const Title = styled.div`
-    font-size: 20px;
+    font-size: 16px;
 `
 
 const P = styled.p`
