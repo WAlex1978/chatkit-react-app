@@ -46,7 +46,7 @@ class ChatInput extends Component {
                 <HR />
                 <Input>
                     <InputGroup>
-                            <FormInput value={this.state.text} onChange={this.onChange} placeholder="Message" />
+                            <FormInput value={this.state.text} onChange={this.onChange} placeholder={"# " + this.props.currentRoom.name} />
                             <InputGroupAddon type="append">
                                 <Button type="submit" theme="primary">Enter</Button>
                             </InputGroupAddon>
