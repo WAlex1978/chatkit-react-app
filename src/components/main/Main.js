@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import styled from 'styled-components';
-import TopBar from '../topbar/TopBar';
+import CurrentChannel from './CurrentChannel';
 import SideBar from '../sidebar/SideBar';
 import ChatBody from './ChatBody';
 import ChatInput from './ChatInput';
@@ -25,10 +25,10 @@ class Main extends Component {
     render() { 
         return (
             <Body>
-                <TopBar/>
                 <div style={{display: "flex", flex: 1}}>
                     <SideBar/>
                     <div style={{display: "flex", flexDirection: "column", flex: 1}}>
+                        <CurrentChannel/>
                         <ChatBody/>
                         <ChatInput/>
                     </div>

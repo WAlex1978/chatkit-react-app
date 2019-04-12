@@ -5,7 +5,6 @@ import styled from 'styled-components';
 const Users = styled.div`
     display: flex;
     flex-direction: column;
-    font-family: 'Roboto', sans-serif;
     font-size: 16px;
     text-align: left;
     padding-left: 25px;
