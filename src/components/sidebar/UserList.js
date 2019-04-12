@@ -7,10 +7,9 @@ const Users = styled.div`
     flex-direction: column;
     font-size: 16px;
     text-align: left;
-    padding-left: 25px;
+    padding-left: 20px;
     padding-top: 20px;
     padding-bottom: 10px;
-    color: #000;
     overflow: hidden;
 `
 

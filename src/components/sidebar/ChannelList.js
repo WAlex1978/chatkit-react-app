@@ -7,14 +7,13 @@ const Channels = styled.div`
     flex-direction: column;
     font-size: 16px;
     text-align: left;
-    padding-left: 25px;
+    padding-left: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-    color: #000;
 `
 
 const Channel = styled.div`
-    padding-left: 15px;
+    padding-left: 10px;
     cursor: pointer;
 `
 

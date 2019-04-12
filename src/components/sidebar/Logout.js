@@ -19,7 +19,7 @@ class Logout extends Component {
 
     render() { 
         return (
-            <Button block squared theme="secondary" onClick={() => this.logOut()}>
+            <Button block squared theme="dark" onClick={() => this.logOut()}>
                 Logout
             </Button>
         );

@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 const Background = styled.div`
-    background-color: rgb(219, 224, 230);
+    background-color: rgb(219, 224, 220);
     display: flex;
     align-items: center;
     font-family: 'Roboto', sans-serif;
     color: #000;
-    font-size: 18px;
+    font-size: 19px;
     text-align: left;
     padding-left: 15px;
     height: 44px;

@@ -7,7 +7,7 @@ const loginCard = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 430px;
+    height: 130px;
     width: 330px;
     margin: auto;
     padding: 20px;

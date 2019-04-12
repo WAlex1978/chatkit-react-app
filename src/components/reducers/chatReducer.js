@@ -44,6 +44,13 @@ const chatReducer = (state = initState, action) => {
                 username: null,
                 currentUser: null,
                 messages: [],
+                rooms: [
+                    {name: 'announcements', id: '19390485'}, 
+                    {name: 'general', id: '19390335'},
+                    {name: 'feedback', id: '19390487'},
+                ],
+                currentRoom: {name: 'general', id: '19390335'},
+                onlineUsers: [],
             }
 
         case 'CHANGE_ROOM':

@@ -9,7 +9,8 @@ const Background = styled.div`
     display: flex;
     flex-direction: column;
     font-family: 'Roboto', sans-serif;
-    background-color: rgb(200, 200, 200);
+    background-color: rgb(47, 49, 54);
+    color: rgb(236, 236, 237);
     height: 100%;
     width: 200px;
 `

@@ -2,11 +2,11 @@ import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 
 const Background = styled.div`
-    background-color: rgb(192, 192, 192);
+    background-color: rgb(41, 44, 48);
     height: 44px;
 `
 const HR = styled.div`
-    background-color: rgb(160, 160, 160);
+    background-color: rgb(25, 25, 25);
     height: 1px;
     width: 100%;
     margin: auto;

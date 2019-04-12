@@ -19,18 +19,18 @@ const Body = styled.section`
 
 // Style declarations for chat body
 const Title = styled.div`
-    font-size: 16px;
+    font-size: 17px;
 `
 
 const P = styled.p`
-    font-size: 14px;
+    font-size: 15px;
     margin-bottom: 5px;
     width: 95%;
     padding: 0px
 `
 
 const Delete = styled.div`
-    font-size: 10px;
+    font-size: 11px;
     padding-right: 12px;
     cursor: pointer;
 `
