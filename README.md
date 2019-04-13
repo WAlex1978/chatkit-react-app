@@ -4,6 +4,8 @@ Chatroom application built in React which utilizes the Pusher Chatkit API.
 
 Uses Redux for state management. Username is persisted between sessions in local storage.
 
+Uses express server for authentication.
+
 [Live Preview on Heroku](https://chatkit-react-app.herokuapp.com/)
 
 <h1>Functionalities</h1>
