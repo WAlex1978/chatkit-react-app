@@ -75,20 +75,18 @@ class ChatBody extends Component {
 
                     {/* Filter messages to current room */}
                     {/* Loop through all messages */}
-                    {this.props.messages.filter(message => {return message.roomId === this.props.currentRoom.id}).map((message, i) => (
+                    {this.props.messages.filter(message => {return message.roomId === this.props.currentRoom.id}).map((message, i, messages) => (
                     
                         <div key={i} onMouseEnter={() => this.onMouseEnter(message.messageId)}>
 
                             {/* If the senderId for current message is not the same as previous message */}
                             {/* Or if this is the first message, then do not display senderId */}
-                            {i === 0 || this.props.messages[i].senderId !== this.props.messages[i-1].senderId ? (
+                            {i === 0 || messages[i].senderId !== messages[i-1].senderId ? (
                                 <span>
 
                                     {/* If message is not the first in list */}
-                                    {/* If message is in the same room as the previous */}
                                     {/* Display horizontal rule, null if else */}
-                                    {i !== 0 && this.props.messages[i].roomId === this.props.messages[i-1].roomId ? 
-                                        <HR/> : null}
+                                    {i !== 0 ? <HR/> : null}
                                     
                                     <Fade in><Title>{message.senderId}</Title></Fade>
                                 </span>
