@@ -37,7 +37,7 @@ const Delete = styled.div`
 
 const HR = styled.div`
     background-color: rgba(45, 45, 45, .3);
-    height: .8px;
+    height: 1px;
     width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
