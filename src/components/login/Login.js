@@ -28,11 +28,18 @@ class Login extends Component {
         this.logIn(this.state.username);
     }
 
+    checkValid = () => {
+        if (this.state.username === '' || this.state.username === null || this.state.username.length > 12)
+            return false;
+
+        return true;
+    }
+
     logIn = async (username) => {
         try {
 
             // Check if username is blank or null
-            if (username === '' || username === null) {
+            if (this.checkValid() !== true) {
                 throw Error ("Invalid username");
             }
 
