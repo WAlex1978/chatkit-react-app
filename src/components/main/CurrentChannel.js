@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 const Background = styled.div`
-    background-color: rgb(219, 224, 220);
+    background-color: rgb(250, 250, 250);
     display: flex;
     align-items: center;
     font-family: 'Roboto', sans-serif;
@@ -33,6 +33,7 @@ class CurrentChannel extends Component {
  
 const mapStateToProps = (state) => {
     return {
+        username: state.username,
         currentRoom: state.currentRoom,
     }
 }

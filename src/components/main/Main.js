@@ -9,7 +9,7 @@ import { subscribe } from '../../services/subscribe';
 
 // Style declaration for the main body
 const Body = styled.div`
-    background-color: rgb(228, 231, 220);
+    background-color: #fff;
     display: flex;
     flex-direction: column;
     height: 100vh;
