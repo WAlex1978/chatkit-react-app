@@ -15,6 +15,8 @@ Run `npm install` to install dependancies.
 
 Run `npm start` to start application.
 
+<h1>Functionalities</h1>
+
 Enter any nickname when prompted to join the chatroom.
 
 Select from three available text channels on the left bar.
