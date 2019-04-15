@@ -11,14 +11,6 @@ export function subscribe(currentUser, rooms, fetchMessages) {
                             fetchMessages(message);
                         }
                     },
-                    // When a user is currently typing
-                    onUserStartedTyping: user => {
-                        console.log(user.name, 'started typing');
-                    },
-                    // When user has stopped typing
-                    onUserStoppedTyping: user => {
-                        console.log(user.name, 'stopped-typing');
-                    }
                 },
                 messageLimit: 100,
             });
