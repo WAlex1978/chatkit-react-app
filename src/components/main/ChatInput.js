@@ -27,8 +27,11 @@ class ChatInput extends Component {
         text: '',
     }
 
+    // Send typing indicator when value is being changed
     onChange = (e) => {
+        let currentUser = this.props.currentUser;
         this.setState({text: e.target.value});
+        currentUser.isTypingIn({roomId: this.props.currentRoom.id});
     }
 
     // On submit, send message
@@ -36,8 +39,10 @@ class ChatInput extends Component {
     onSubmit = (e) => {
         e.preventDefault();
 
-        sendMessage(this.props.currentUser, this.state.text, this.props.currentRoom.id);
-        this.setState({text: ''});
+        if (this.state.text !== '') {
+            sendMessage(this.props.currentUser, this.state.text, this.props.currentRoom.id);
+            this.setState({text: ''});
+        }
     }
 
     render() { 

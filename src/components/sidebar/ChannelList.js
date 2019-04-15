@@ -29,7 +29,7 @@ class ChannelList extends Component {
 
                 {/* On click changes the current room to a new one */}
                 <Channel onClick={() => this.changeRoom({name: 'announcements', id: '19390485'})}># announcements</Channel>
-                <Channel onClick={() => this.changeRoom({name: 'general', id: '19390335'})}># general</Channel>
+                <Channel onClick={() => this.changeRoom({name: 'general', id: '19391104'})}># general</Channel>
                 <Channel onClick={() => this.changeRoom({name: 'feedback', id: '19390487'})}># feedback</Channel>
             </Channels>
         );

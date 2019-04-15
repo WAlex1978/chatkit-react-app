@@ -17,10 +17,10 @@ export const loadState = () => {
             messages: [],
             rooms: [
                 {name: 'announcements', id: '19390485'}, 
-                {name: 'general', id: '19390335'},
+                {name: 'general', id: '19391104'},
                 {name: 'feedback', id: '19390487'},
             ],
-            currentRoom: {name: 'general', id: '19390335'},
+            currentRoom: {name: 'general', id: '19391104'},
             onlineUsers: [],
         });
     }
