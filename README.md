@@ -17,9 +17,11 @@ Run `npm start` to start application.
 
 <h1>Functionalities</h1>
 
-Enter any nickname when prompted to join the chatroom.
+Enter any nickname when prompted to join the chatroom. Your username will be saved and persisted in local storage.
 
-Select from three available text channels on the left bar.
+Select from three available text channels on the left side bar.
+
+All currently connected users will be displayed on the left side bar.
 
 Input chatroom messages at the bottom of the screen and the chat body will be updated in real time.
 
